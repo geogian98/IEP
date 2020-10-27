@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/geo/Projects/iep/TemaIep1/main.cpp
+iostream
+-
+myLib.h
+/Users/geo/Projects/iep/TemaIep1/myLib.h
+
+/Users/geo/Projects/iep/TemaIep1/myLib.h
+

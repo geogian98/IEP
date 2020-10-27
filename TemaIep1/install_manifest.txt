@@ -1,0 +1,3 @@
+/Users/geo/Projects/iep/TemaIep1/install/bin/TemaIep1
+/Users/geo/Projects/iep/TemaIep1/install/libs/libMyLib.a
+/Users/geo/Projects/iep/TemaIep1/install/include/myLib.h
