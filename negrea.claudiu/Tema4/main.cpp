@@ -52,9 +52,11 @@ class BankAccount:private Uncopyable{
 		std::cout << " The account balance is: " << balanceAccount << "\n";
 		}
 	void BankAccount::updateBalance(int amount){
-		balanceAccount += amount;
-		std::cout << " Deposit amount is : " << amount << "\n";
-		std::cout << " The account balance is: " << balanceAccount << "\n";
+		if(amount > 0){
+			balanceAccount += amount;
+			std::cout << " Deposit amount is : " << amount << "\n";
+			std::cout << " The account balance is: " << balanceAccount << "\n";
+		}
 	}
 	
 	int main(){
