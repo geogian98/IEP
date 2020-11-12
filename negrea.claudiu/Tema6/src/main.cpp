@@ -13,7 +13,6 @@ class ContBancar{
 		void extrasBancar();
 		friend void activeaza(ContBancar&);
 		friend void dezactiveaza(ContBancar&);
-		friend void plataNoua(int);
 		bool isActive(){ return active;};
 		int getDepozit(){ return depozit;}
 		std::string getPosesor(){ return posesor;}
@@ -28,14 +27,23 @@ ContBancar::ContBancar(const std::string& nume): posesor(nume), depozit(0), acti
 std::cout << " \n S-a creat un cont bancar, posesorul fiind: "<< nume << "\n";
 }
 void ContBancar::tranzactie(int v){
+
 	if(active){
-	depozit += v;
-	std::cout << "S-a efectuat o tranzactie \n";
-	std::cout << "In contul curent aveti :  "<< depozit << "lei\n";
+		if (v > 0){
+			depozit += v;
+			std::cout << "S-a efectuat o depunere de " << v << "lei in contul posesorului: " << posesor << "\n";
+		}
+		if(v < 0 ){
+			depozit += v;
+			std::cout << "S-a efectuat o retragere de "<< v << "lei \n";
+		}
+			
+		std::cout << "In contul curent aveti :  "<< depozit << "lei\n";
 	}
 	else{
-	std::cout << "Contul este blocat, nu se poate efectua tranzactia\n";
+		std::cout << "Contul nu e activat \n";
 	}
+	
 }
 
 void ContBancar::extrasBancar(){
@@ -61,18 +69,21 @@ class Card{
 	~ Card(){
 		dezactiveaza(*cont);
 		}
-
+	ContBancar* get(){ return cont;}
+	
 	void extras(){
 		if( !cont->isActive() ){
 			std::cout << " Cont blocat/ dezactivat \n";
 		}
 		else{
+			std::cout << "\n ---EXTRAS BANCAR--- \n";
+			std::cout << "Adresa cont bancar" << &cont << "\n";
 			std::cout << " Posesorul cardului: "<< cont->getPosesor() << "\n";
-			std::cout << " In cont aveti: "<< cont->getDepozit() << "lei \n";
+			std::cout << " In cont aveti: "<< cont->getDepozit() << "lei \n\n";
+			
 		}
 	}
 	
-	ContBancar get(){ return *cont;}
 		
 	private:
 	 ContBancar *cont;
@@ -80,6 +91,7 @@ class Card{
 
 int main(){
 
+/*
 std::unique_ptr<ContBancar> c1( new ContBancar("Negrea Claudiu"));
 c1->tranzactie(150);
 c1->extrasBancar();
@@ -92,10 +104,16 @@ c2->extrasBancar();
 c1.reset(new ContBancar("Negrea Claudiu-Madalin"));
 c1->extrasBancar();
 
+*/
 
 Card card(new ContBancar("Cristi"));
+std::cout <<"Adresa card in memorie " << &card << "\n \n";
+
+
+card.get()->tranzactie(250);
+
+
 card.extras();
-card.get().tranzactie(150);
 
 return 0;
 }
