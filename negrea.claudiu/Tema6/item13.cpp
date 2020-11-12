@@ -13,6 +13,7 @@ class ContBancar{
 		void extrasBancar();
 		friend void activeaza(ContBancar&);
 		friend void dezactiveaza(ContBancar&);
+		friend void plataNoua(int);
 		bool isActive(){ return active;};
 		int getDepozit(){ return depozit;}
 		std::string getPosesor(){ return posesor;}
@@ -70,7 +71,9 @@ class Card{
 			std::cout << " In cont aveti: "<< cont->getDepozit() << "lei \n";
 		}
 	}
-
+	
+	ContBancar get(){ return *cont;}
+		
 	private:
 	 ContBancar *cont;
 };
@@ -89,8 +92,10 @@ c2->extrasBancar();
 c1.reset(new ContBancar("Negrea Claudiu-Madalin"));
 c1->extrasBancar();
 
+
 Card card(new ContBancar("Cristi"));
 card.extras();
+card.get().tranzactie(150);
 
 return 0;
 }
