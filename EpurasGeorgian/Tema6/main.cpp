@@ -1,5 +1,6 @@
  #include <iostream> 
 using namespace std; 
+#include <mutex>
 
 class Parinte
 {
@@ -64,6 +65,14 @@ public:
   std::string nume;
 };
 
+std::mutex m;//you can use std::lock_guard if you want to be exception safe
+void mutexTest()
+
+{
+  m.lock();
+  std::cout<<"Call from mutex\n";
+  m.unlock();
+}
 int main() 
 { 
     std::unique_ptr<Parinte> parinte1( new Parinte("Parinte1"));
@@ -74,6 +83,9 @@ int main()
     Copil copil1(new Parinte("padre"),"Gogu");
     copil1.getParinte() -> afiseazaNume();
 
+   mutexTest();
+
+
     std::cout<<copil1.getVarsta()<<"\n";
     copil1.adaugaAni(19);
     std::cout<<copil1.getVarsta()<<"\n";
@@ -81,6 +93,9 @@ int main()
     std::cout<<copil1.getVarsta()<<"\n";
     return 0;
 
-
 } 
+
+
+
+
 
