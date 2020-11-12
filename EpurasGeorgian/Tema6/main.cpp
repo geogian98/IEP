@@ -1,6 +1,8 @@
  #include <iostream> 
 using namespace std; 
 #include <mutex>
+#include <thread>
+
 
 class Parinte
 {
@@ -83,7 +85,8 @@ int main()
     Copil copil1(new Parinte("padre"),"Gogu");
     copil1.getParinte() -> afiseazaNume();
 
-   mutexTest();
+    std::thread my_thread(mutexTest);
+    my_thread.join();
 
 
     std::cout<<copil1.getVarsta()<<"\n";
