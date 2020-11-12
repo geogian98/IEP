@@ -69,7 +69,7 @@ class Card{
 	~ Card(){
 		dezactiveaza(*cont);
 		}
-	ContBancar* get(){ return cont;}
+	ContBancar* get(){ return cont.get();}
 	
 	void extras(){
 		if( !cont->isActive() ){
@@ -86,7 +86,7 @@ class Card{
 	
 		
 	private:
-	 ContBancar *cont;
+	 std::unique_ptr <ContBancar>cont;
 };
 
 int main(){
@@ -108,12 +108,10 @@ c1->extrasBancar();
 
 Card card(new ContBancar("Cristi"));
 std::cout <<"Adresa card in memorie " << &card << "\n \n";
-
-
 card.get()->tranzactie(250);
-
-
 card.extras();
+
+//Card c2 = card; eroare 
 
 return 0;
 }
