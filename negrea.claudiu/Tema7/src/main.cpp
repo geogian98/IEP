@@ -10,10 +10,9 @@ class ContBancar{
 	
 	public: ContBancar(const std::string &nume);
 		void tranzactie(int v);
-		//void extrasBancar();
-		friend void activeaza(ContBancar&);
-		friend void dezactiveaza(ContBancar&);
-		bool isActive(){ return active;};
+		void activeaza(){active = true;std::cout << " Cont activat\n";}
+		void dezactiveaza(){active = false;std::cout << " Cont dezactivat\n";}	
+		bool isActive(){ return active;}
 		int getDepozit(){ return depozit;}
 		std::string getPosesor(){ return posesor;}
 		
@@ -22,6 +21,8 @@ private: std::string posesor;
 	 bool active ;
 
 };
+
+
 
 ContBancar::ContBancar(const std::string& nume): posesor(nume), depozit(0), active(false) { 
 std::cout << " \n S-a creat un cont bancar, posesorul fiind: "<< nume << "\n";
@@ -58,18 +59,17 @@ if(! cont.isActive()){
 
 
 
-void activeaza(ContBancar& cont){cont.active = true;std::cout << "Cont activat \n";}
-void dezactiveaza(ContBancar& cont){cont.active = false;std::cout << "Cont dezactivat \n";}
-
 
 
 class Card{
+
 	public:
 	explicit Card(ContBancar *cb): cont(cb){
-		activeaza(*cont);
+		cont->activeaza();
 	}
+	
 	~ Card(){
-		dezactiveaza(*cont);
+		cont->dezactiveaza();
 		}
 	
 	
