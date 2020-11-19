@@ -17,6 +17,10 @@ public:
     std::cout << " Numele parintelui: "<< nume << "\n";
   }
 
+  std::string getNume()
+  {
+    return nume;
+  }
   private :
   std::string nume;
 };
@@ -61,11 +65,21 @@ public:
     parinte->afiseazaNume();
   }
 
+  std::string getNumeParinte()
+  {
+    return parinte->getNume();
+  }
 
   int getVarsta()
   {
     return varsta;
   }
+
+  std::string getNume()
+  {
+    return nume;
+  }
+
   private :
   int varsta;
   bool isAdult;
@@ -73,15 +87,23 @@ public:
   std::string nume;
 };
 
+void afiseazaInfo(Copil& copil)
+{
+  std::string numeCopil = copil.getNume();
+  std::string numeParinte = copil.getNumeParinte();
+  int varstaCopil = copil.getVarsta();
+  std::cout<<numeCopil<<" are varsta de  "<<varstaCopil<<" si este fiul lui "<<numeParinte<<"\n";
+}
+
 int main() 
 { 
-    std::unique_ptr<Parinte> parinte1( new Parinte("Parinte1"));
-    std::unique_ptr<Parinte> parinte2( new Parinte("Parinte2"));
-    //parinte2 = parinte1; da eroare,ii unique pointer,deci nu se poate copia
-    parinte2->afiseazaNume();
+   
+    Copil copil1(new Parinte("ION"),"Gogu");
+    copil1.adaugaAni(5);
+    copil1.afiseazaNumeParinte();//am facut aceasta metoda pentru a fi mai usor de folosit,
+    //in locul acesteia se putea folosii copil1.getParinte()->afiseazaNume();
 
-    Copil copil1(new Parinte("padre"),"Gogu");
-    copil1.afiseazaNumeParinte();
+    afiseazaInfo(copil1);
    
     return 0;
 
