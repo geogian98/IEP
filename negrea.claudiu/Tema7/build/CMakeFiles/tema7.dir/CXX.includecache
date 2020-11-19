@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema7/src/main.cpp
+memory
+-
+iostream
+-
+string
+-
+

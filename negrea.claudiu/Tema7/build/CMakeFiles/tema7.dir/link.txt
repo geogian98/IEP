@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/tema7.dir/src/main.cpp.o  -o tema7 
