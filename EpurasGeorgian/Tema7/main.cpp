@@ -56,6 +56,12 @@ public:
      
   }
 
+  void afiseazaNumeParinte()
+  {
+    parinte->afiseazaNume();
+  }
+
+
   int getVarsta()
   {
     return varsta;
@@ -67,14 +73,6 @@ public:
   std::string nume;
 };
 
-std::mutex m;//you can use std::lock_guard if you want to be exception safe
-void mutexTest()
-
-{
-  m.lock();
-  std::cout<<"Call from mutex\n";
-  m.unlock();
-}
 int main() 
 { 
     std::unique_ptr<Parinte> parinte1( new Parinte("Parinte1"));
@@ -83,17 +81,8 @@ int main()
     parinte2->afiseazaNume();
 
     Copil copil1(new Parinte("padre"),"Gogu");
-    copil1.getParinte() -> afiseazaNume();
-
-    std::thread my_thread(mutexTest);
-    my_thread.join();
-
-
-    std::cout<<copil1.getVarsta()<<"\n";
-    copil1.adaugaAni(19);
-    std::cout<<copil1.getVarsta()<<"\n";
-    copil1.adaugaAni(79);
-    std::cout<<copil1.getVarsta()<<"\n";
+    copil1.afiseazaNumeParinte();
+   
     return 0;
 
 } 
