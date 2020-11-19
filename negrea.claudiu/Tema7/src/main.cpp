@@ -85,13 +85,13 @@ class Card{
 	}
 	
 	void tranzactie(int suma){
-		get()->tranzactie(suma);
+		cont->tranzactie(suma);
 	}
 	
 		
 	private:
 	 std::unique_ptr <ContBancar>cont;
-	 ContBancar* get(){ return cont.get();}
+	 //ContBancar* get(){ return cont.get();}
 };
 
 
@@ -106,13 +106,12 @@ int main(){
 
 Card card(new ContBancar("Cristi"));
 std::cout <<"Adresa card in memorie " << &card << "\n \n";
-//card.get()->tranzactie(250);
 card.tranzactie(200);   // easier to call
 card.extras();                
 
 ContBancar* c3 = new ContBancar("Cristian");
 Card card2(c3);
-//card2.get()->tranzactie(1250);
+
 
 card2.tranzactie(150);;
 card2.extras();
