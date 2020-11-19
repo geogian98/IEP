@@ -10,7 +10,7 @@ class ContBancar{
 	
 	public: ContBancar(const std::string &nume);
 		void tranzactie(int v);
-		void extrasBancar();
+		//void extrasBancar();
 		friend void activeaza(ContBancar&);
 		friend void dezactiveaza(ContBancar&);
 		bool isActive(){ return active;};
@@ -46,14 +46,16 @@ void ContBancar::tranzactie(int v){
 	
 }
 
-void ContBancar::extrasBancar(){
+// ITEM 23 Non-member non-friend function
 
-	if(!active){
+void extrasBancar(ContBancar& cont){
+if(! cont.isActive()){
 	std::cout << " Cont blocat/ dezactivat \n";
 	}
-	std::cout << " Posesorul cardului: "<< posesor << "\n";
-	std::cout << " In cont aveti: "<< depozit << "lei \n";
+	std::cout << " Posesorul cardului: "<< cont.getPosesor() << "\n";
+	std::cout << " In cont aveti: "<< cont.getDepozit() << "lei \n";
 }
+
 
 
 void activeaza(ContBancar& cont){cont.active = true;std::cout << "Cont activat \n";}
@@ -72,16 +74,7 @@ class Card{
 	
 	
 	void extras(){
-		if( !cont->isActive() ){
-			std::cout << " Cont blocat/ dezactivat \n";
-		}
-		else{
-			std::cout << "\n ---EXTRAS BANCAR--- \n";
-			std::cout << "Adresa cont bancar" << &cont << "\n";
-			std::cout << " Posesorul cardului: "<< cont->getPosesor() << "\n";
-			std::cout << " In cont aveti: "<< cont->getDepozit() << "lei \n\n";
-			
-		}
+		extrasBancar(*cont);
 	}
 	
 	void tranzactie(int suma){
@@ -105,7 +98,6 @@ int main(){
 
 
 Card card(new ContBancar("Cristi"));
-std::cout <<"Adresa card in memorie " << &card << "\n \n";
 card.tranzactie(200);   // easier to call
 card.extras();                
 
