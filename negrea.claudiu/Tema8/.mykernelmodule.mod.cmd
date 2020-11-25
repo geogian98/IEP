@@ -1,0 +1,1 @@
+cmd_/home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema8/mykernelmodule.mod := { echo  /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema8/mykernelmodule.o; echo; } > /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema8/mykernelmodule.mod
