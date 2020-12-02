@@ -44,5 +44,6 @@ Remove the .ko module
 
 	
 More info at : https://elinux.org/Device_Tree_Usage
+
 https://elinux.org/Device_Tree_Reference
 
