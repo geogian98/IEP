@@ -26,18 +26,23 @@ Add into the device tree source an node representing the new device
 ```
 
 Compile the data tree source into an data tree blob
+
 	dtc -O dtb -I dts  output.dtb input.dts
 
 Created an simple driver testdriver.c and an Makefile to create the .ko module
+
 	make
 
-
 Insert the .ko module
+
 	insmod testdriver.ko
+	
+Remove the .ko module
+	
+	rmmod testdriver.ko
+	
+
 	
 More info at : https://elinux.org/Device_Tree_Usage
 https://elinux.org/Device_Tree_Reference
 
-Remove the .ko module
-	rmmod testdriver.ko
-	
