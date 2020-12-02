@@ -1,0 +1,1 @@
+cmd_/home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.mod := { echo  /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.o; echo; } > /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.mod

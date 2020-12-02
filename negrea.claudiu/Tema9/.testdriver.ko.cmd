@@ -1,0 +1,1 @@
+cmd_/home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.ko /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.o /home/claudiu/Desktop/labIEP/IEP/negrea.claudiu/Tema9/testdriver.mod.o;  true
